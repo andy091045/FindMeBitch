@@ -2059,7 +2059,7 @@ PrefabInstance:
     - target: {fileID: 4776093798651057890, guid: 8701158c73396e8488c1da7b0f170b9e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4776093798651057916, guid: 8701158c73396e8488c1da7b0f170b9e,
         type: 3}
@@ -2169,6 +2169,7 @@ GameObject:
   - component: {fileID: 2034138350}
   - component: {fileID: 2034138349}
   - component: {fileID: 2034138353}
+  - component: {fileID: 2034138354}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2278,6 +2279,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneNumber: 
+--- !u!114 &2034138354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034138348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c282edaa4597df34b9e84156b3e4d465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossAttackTime: 25
+  BossAttackTime: {fileID: 220460870}
+  BossLose: {fileID: 546136619}
 --- !u!1001 &2282379799277617601
 PrefabInstance:
   m_ObjectHideFlags: 0

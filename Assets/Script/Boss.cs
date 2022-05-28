@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
-using UnityEngine.UI;
 [RequireComponent(typeof(AudioSource))]
+
 public class Boss : MonoBehaviour
 {
     public AudioClip impact;
     AudioSource audiosource;
     public Animator animator;
-    bool isAttackedKeyPressed = false;
-    public Text AttackTime;
-    public Text BossLose;
+    bool isAttackedKeyPressed = false;    
     public int bossAttackTime = 25;
     public GameObject weapon;
     public GameObject weapon1;
@@ -20,6 +18,8 @@ public class Boss : MonoBehaviour
     const string BOSSH = "bossh1";
     const string BOSSV = "bossv1";
     public float _speed;// Start is called before the first frame update
+    public delegate void OnAttack(); //設定攻擊委託
+    public static event OnAttack onAttack; //建立攻擊事件
 
     public float beat = (60 / 130) * 2;
 
@@ -46,7 +46,6 @@ public class Boss : MonoBehaviour
         weapon1.SetActive(false);
         weapon2.SetActive(false);
         weapon3.SetActive(false);
-
     }
 
     void MovementX()
@@ -71,10 +70,8 @@ public class Boss : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= beat)
             {
-                weapon.SetActive(false);
-                bossAttackTime--;
-                AttackTime.text = bossAttackTime + "";
-                Debug.Log(bossAttackTime);
+                weapon.SetActive(false);              
+                onAttack();
                 timer = 0;
                 isAttackedKeyPressed = false;
             }
@@ -87,10 +84,8 @@ public class Boss : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= beat)
             {
-                weapon1.SetActive(false);
-                bossAttackTime--;
-                AttackTime.text = bossAttackTime + "";
-                Debug.Log(bossAttackTime);
+                weapon1.SetActive(false);               
+                onAttack();
                 timer = 0;
                 isAttackedKeyPressed = false;
             }
@@ -103,10 +98,8 @@ public class Boss : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= beat)
             {
-                weapon2.SetActive(false);
-                bossAttackTime--;
-                AttackTime.text = bossAttackTime + "";
-                Debug.Log(bossAttackTime);
+                weapon2.SetActive(false);               
+                onAttack();
                 timer = 0;
                 isAttackedKeyPressed = false;
             }
@@ -119,29 +112,17 @@ public class Boss : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= beat)
             {
-                weapon3.SetActive(false);
-                bossAttackTime--;
-                AttackTime.text = bossAttackTime + "";
-                Debug.Log(bossAttackTime);
+                weapon3.SetActive(false);               
+                onAttack();
                 timer = 0;
                 isAttackedKeyPressed = false;
             }
         }
     }
 
-    void Attack()
-    {
-        if (bossAttackTime <= 0)
-        {
-            BossLose.text = "Chanllengers Win!";
-        }
-    }
-
     void Update()
-    {
-        Attack();
+    {      
         MovementX();
-        BossAttack();
-        // weapon.SetActive(false);
+        BossAttack();       
     }
 }

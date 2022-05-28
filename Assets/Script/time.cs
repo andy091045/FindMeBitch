@@ -27,8 +27,8 @@ public class time : MonoBehaviour
         if (time_int == 0)
         {
 
-            time_UI.text = "time\nup";
-            time1_UI.text = "Boss Win!";
+                time_UI.text = "time\nup";
+                time1_UI.text = "Boss Win!";
 
             CancelInvoke("timer");
 

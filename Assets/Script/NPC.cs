@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
-
 public class NPC : MonoBehaviour
 {
     public Animator animator;
@@ -19,14 +17,13 @@ public class NPC : MonoBehaviour
     Vector2 movement;
 
     float timer;
+
+    //SerializeField can display private variables in the unity editor
     [SerializeField] Vector2 range = new Vector2(5, 5);
 
     void Start()
     {
-        speed = Random.Range(1, 5);
-        movement = a.transform.position;
-        movement = new Vector2(Random.Range(-9, 7), Random.Range(-3, 3));
-        a.transform.position = movement;
+        speed = Random.Range(1, 5);      
         movement.x = Random.Range(-1, 2);//(-1,1)包含-1但不包含1
         movement.y = Random.Range(-1, 2);
     }
@@ -64,17 +61,6 @@ public class NPC : MonoBehaviour
             // y = Random.Range(-1, 2);
             timer = 0;
             Debug.Log("t0");
-        }
-
-
-
-        // step = speed * Time.deltaTime;
-        // npc.position = Vector3.MoveTowards(npc.position, new Vector3(Random.Range(-8, 8), Random.Range(-5, 5), 0), 10);
-
-        // npc.position = new Vector3(Random.Range(-8, 8), Random.Range(-5, 5), -1);     
-        // transform.LookAt(npc.position);
-        // transform.Translate(Vector3.forward * speed);
-
-        // Invoke("moveTo", 5);
+        }        
     }
 }
